@@ -12,8 +12,8 @@ export class UsersController {
     @UseGuards(JwtAuthGuard, RolesGuard)
     @Roles('Admin')
     @Post()
-    async adduser(@Body() body: CreateUserDTO) {
-        return this.usersService.addUsers(body);
+    async adduser(@Body() body: CreateUserDTO,@Req() req:any) {
+        return this.usersService.addUsers(body,req.user.sub);
 
     }
 

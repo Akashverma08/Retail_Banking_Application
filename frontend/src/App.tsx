@@ -1,4 +1,4 @@
-import { Route, Routes, useLocation ,Navigate} from "react-router";
+import { Route, Routes, useLocation, Navigate } from "react-router";
 import "./App.css";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
@@ -10,9 +10,11 @@ import SignUp from "./pages/SignUp";
 import AuthRoute from "./pages/AuthRoute";
 import TaskList from "./pages/TaskList";
 import CustomerDashboard from "./pages/CustomerDashboard";
+import CreateAccount from "./pages/CreateAccount";
+import MyAccount from "./pages/MyAccount";
 
 export default function App() {
-  
+
 
   const location = useLocation();
   const isLoginPage = location.pathname === "/login" || location.pathname === "/signup";
@@ -54,11 +56,23 @@ export default function App() {
           />
 
           <Route
+            path="/my-accounts"
+            element={<Protected allowedRoles={["Customer"]}>
+              <MyAccount/>
+            </Protected>}
+          />
+
+          <Route
             path="/users"
             element={<Protected allowedRoles={["Admin"]}>
               <TaskList />
             </Protected>}
           />
+
+          <Route path="/accounts/create" element={
+            <Protected allowedRoles={["Admin"]}>
+              <CreateAccount />
+            </Protected>} />
 
 
           <Route

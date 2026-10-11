@@ -18,7 +18,7 @@ export default function Sidebar() {
         <>
           <Link to="/dashboard"><h3>Dashboard</h3></Link>
           <Link to="/users"><h3>User List</h3></Link>
-          <Link to="/users/create"><h3>Create User</h3></Link>
+          <Link to="/accounts/create"><h3>Create User</h3></Link>
           <Link to="/accounts"><h3>Accounts</h3></Link>
           <Link to="/transactions"><h3>Transactions</h3></Link>
         </>

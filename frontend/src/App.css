@@ -211,3 +211,318 @@
   text-align: center;
   margin-top: 10px;
 }
+
+
+
+
+.create-account-page {
+  width: 100%;
+  padding: 24px;
+  background: #f8fafc;
+}
+
+.create-account-card {
+  width: 100%;
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 24px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.create-account-card h1 {
+  margin-bottom: 8px;
+  color: #1e3a8a;
+  font-size: 26px;
+}
+
+.create-account-subtitle {
+  margin-bottom: 24px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.step-indicator {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.step-indicator span {
+  padding: 8px 10px;
+  border-radius: 5px;
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 13px;
+}
+
+.step-indicator span.active {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.create-account-card h2 {
+  margin-bottom: 20px;
+  color: #1e293b;
+  font-size: 20px;
+}
+
+.create-account-card label {
+  display: block;
+  margin-bottom: 6px;
+  color: #334155;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.create-account-card input,
+.create-account-card select {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 6px;
+  border: 1px solid #cbd5e1;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.create-account-card form > div {
+  margin-bottom: 16px;
+}
+
+.create-account-card form > div > div {
+  margin-top: 4px;
+  color: #dc2626;
+  font-size: 12px;
+}
+
+.create-account-card button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+}
+
+.create-account-card button:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+}
+
+.create-account-card .back-button {
+  margin-top: 10px;
+  background: #64748b;
+}
+
+@media (max-width: 600px) {
+  .create-account-page {
+    padding: 12px;
+  }
+
+  .create-account-card {
+    padding: 18px;
+  }
+
+  .step-indicator {
+    gap: 5px;
+  }
+
+  .step-indicator span {
+    padding: 7px;
+    font-size: 11px;
+  }
+}
+
+
+
+/* Back left, Next/Submit right */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.form-actions-end {
+  justify-content: flex-end;
+}
+
+.create-account-card .form-actions .back-button {
+  margin: 0;
+  background: #e2e8f0;
+  color: #334155;
+}
+
+.create-account-card .form-actions .back-button:hover {
+  background: #cbd5e1;
+}
+
+.create-account-card .form-actions button {
+  min-width: 90px;
+}
+
+/* Review page */
+.review-section {
+  margin: 20px 0;
+  padding: 18px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.review-section h3 {
+  margin: 0 0 12px;
+  color: #1e40af;
+  font-size: 17px;
+}
+
+.review-section p {
+  margin: 8px 0;
+  color: #334155;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.review-section strong {
+  color: #0f172a;
+}
+
+
+
+
+.my-account-page {
+  width: 100%;
+  min-height: 100%;
+  padding: 24px;
+  background: #f8fafc;
+}
+
+.my-account-page > h1 {
+  margin-bottom: 8px;
+  color: #1e3a8a;
+  font-size: 28px;
+}
+
+.account-subtitle {
+  margin-bottom: 24px;
+  color: #64748b;
+}
+
+.my-account-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.my-account-card {
+  padding: 22px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.account-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.account-card-header h2 {
+  color: #1e40af;
+  font-size: 20px;
+}
+
+.account-badge {
+  padding: 5px 10px;
+  background: #dbeafe;
+  color: #1d4ed8;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.masked-number {
+  margin-bottom: 20px;
+  color: #64748b;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.account-balance {
+  padding: 16px;
+  margin-bottom: 18px;
+  background: #f1f5f9;
+  border-radius: 6px;
+}
+
+.account-balance span,
+.account-details span {
+  display: block;
+  margin-bottom: 6px;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.account-balance h3 {
+  color: #15803d;
+  font-size: 25px;
+}
+
+.account-details p {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.account-details p:last-child {
+  border-bottom: none;
+}
+
+.account-details strong {
+  color: #1e293b;
+  text-align: right;
+}
+
+.account-message {
+  padding: 20px;
+  color: #475569;
+  background: #fff;
+  border-radius: 6px;
+}
+
+.account-error {
+  margin-bottom: 12px;
+  color: #dc2626;
+}
+
+.retry-button {
+  padding: 9px 16px;
+  color: white;
+  background: #2563eb;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.retry-button:hover {
+  background: #1d4ed8;
+}
+
+@media (max-width: 600px) {
+  .my-account-page {
+    padding: 16px;
+  }
+
+  .my-account-list {
+    grid-template-columns: 1fr;
+  }
+}

@@ -38,8 +38,8 @@ export class Users {
     })
     isLocked: boolean;
 
-    /*@Prop({ required: true })
-    userId: string;*/
+    @Prop({ required: true })
+    userId: string;
 }
 
 export const UsersSchema = SchemaFactory.createForClass(Users)
