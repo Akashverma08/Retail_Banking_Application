@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, UseGuards,Param } from '@nestjs/common';
 import { UsersService } from "./users.service.js";
 import { CreateUserDTO } from "./dto/create-user.dto.js";
 import { JwtAuthGuard } from "../common/guards/jwt-auth.guard.js";
@@ -12,8 +12,8 @@ export class UsersController {
     @UseGuards(JwtAuthGuard, RolesGuard)
     @Roles('Admin')
     @Post()
-    async adduser(@Body() body: CreateUserDTO,@Req() req:any) {
-        return this.usersService.addUsers(body,req.user.sub);
+    async adduser(@Body() body: CreateUserDTO, @Req() req: any) {
+        return this.usersService.addUsers(body, req.user.sub);
 
     }
 
@@ -29,10 +29,18 @@ export class UsersController {
     @UseGuards(JwtAuthGuard, RolesGuard)
     @Roles('Customer')
     @Get("/customer")
-    async getUser(@Req() req:any){
+    async getUser(@Req() req: any) {
         //console.log(req.user);
         return this.usersService.getUser(req.user.sub);
 
+    }
+
+
+    @UseGuards(JwtAuthGuard, RolesGuard)
+    @Roles('Admin')
+    @Get(':id')
+    async getUserById(@Param('id') id: string) {
+        return this.usersService.getUserById(id);
     }
 
 

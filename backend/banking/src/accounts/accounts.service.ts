@@ -81,9 +81,47 @@ export class AccountsService {
     }
   }
 
+  async getAccountsByUserId(userId: string) {
+    return this.accountModel
+      .find({ userId })
+      .select("+accountNumber")
+      .exec();
+  }
+
 
 
   async findByAccountNumber(accountNumber: string) {
-    return this.accountModel.findOne({ accountNumber }).exec();
+    return await this.accountModel.findOne({ accountNumber }).exec();
+  }
+
+
+  async debitAccount(accountId: string, amount: number) {
+    return await this.accountModel.findOneAndUpdate(
+      {
+        id: accountId,
+        balance: { $gte: amount },
+        isFrozen: false
+      },
+      {
+        $inc: { balance: -amount },
+
+      },
+      { new: true }
+    )
+
+  }
+
+
+  async creditAccount(accountId: string, amount: number) {
+    return await this.accountModel.findOneAndUpdate(
+      {
+        id: accountId,
+        isFrozen: false
+      },
+      {
+        $inc: { balance: amount }
+      },
+      { new: true }
+    )
   }
 }

@@ -5,6 +5,8 @@ import { MongooseModule } from "@nestjs/mongoose";
 import { ConfigModule } from "@nestjs/config";
 import { AccountsModule } from './accounts/accounts.module.js';
 import { PayeesModule } from './payees/payees.module.js';
+import { TransactionsModule } from './transactions/transactions.module.js';
+
 
 @Module({
   imports: [ConfigModule.forRoot({ isGlobal: true }),
@@ -12,7 +14,8 @@ import { PayeesModule } from './payees/payees.module.js';
     UsersModule,
     AuthModule,
     AccountsModule,
-    PayeesModule],
+    PayeesModule,
+    TransactionsModule],
   controllers: [],
   providers: [],
 })

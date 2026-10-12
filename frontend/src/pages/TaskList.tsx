@@ -46,7 +46,9 @@ export default function TaskList() {
             renderCell: (params) => (
                 <div style={{ display: "flex", gap: "6px", alignItems: "center" }}>
                     <Link to={`/users/${params.row.id}`}>
-                        <Button variant="outlined" size="small">View</Button>
+                        <Button variant="outlined" size="small">
+                            View
+                        </Button>
                     </Link>
 
                     <Link to={`/users/edit/${params.row.id}`}>

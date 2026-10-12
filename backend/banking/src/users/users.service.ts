@@ -1,4 +1,4 @@
-import { Injectable, ConflictException,NotFoundException ,ForbiddenException} from '@nestjs/common';
+import { Injectable, ConflictException, NotFoundException, ForbiddenException } from '@nestjs/common';
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
 import { Users } from "./schemas/users.schema.js";
@@ -12,7 +12,7 @@ export class UsersService {
     constructor(@InjectModel(Users.name)
     private readonly usersModel: Model<Users>) { }
 
-    async addUsers(body: CreateUserDTO,userId:string) {
+    async addUsers(body: CreateUserDTO, userId: string) {
         try {
 
             const existingUser = await this.usersModel.findOne({ email: body.email });
@@ -27,7 +27,7 @@ export class UsersService {
                 email: body.email,
                 passwordHash: hashedPassword,
                 role: body.role,
-                userId:userId
+                userId: userId
 
 
             })
@@ -73,6 +73,16 @@ export class UsersService {
 
         if (user.role !== 'Customer') {
             throw new ForbiddenException('Account can only be created for a customer');
+        }
+
+        return user;
+    }
+
+    async getUserById(id: string) {
+        const user = await this.usersModel.findOne({ id }).exec();
+
+        if (!user) {
+            throw new NotFoundException('User not found');
         }
 
         return user;

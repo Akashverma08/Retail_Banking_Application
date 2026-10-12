@@ -17,6 +17,7 @@ import {MongooseModule} from "@nestjs/mongoose";
      ])
   ],
   controllers: [PayeesController],
-  providers: [PayeesService]
+  providers: [PayeesService],
+  exports:[MongooseModule,PayeesService]
 })
 export class PayeesModule {}

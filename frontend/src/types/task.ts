@@ -22,3 +22,19 @@ export type CreateAccount = {
     currency?: string;
     dailyLimit: number;
 };
+
+
+
+
+export interface AccountDetails {
+  id: string;
+  userId: string;
+  accountNumber: string;
+  maskedNumber?: string;
+  type: string;
+  balance: number;
+  currency: string;
+  dailyLimit?: number;
+  isFrozen: boolean;
+  createdAt?: string;
+}
