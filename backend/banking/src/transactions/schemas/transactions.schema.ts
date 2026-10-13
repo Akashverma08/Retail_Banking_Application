@@ -23,9 +23,9 @@ export class Transactions{
     accountId:string;
 
     @Prop({
-        required:true
+        required:false
     })
-    payeeId:string;
+    payeeId?:string;
 
     @Prop({
         required:true,

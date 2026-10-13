@@ -13,12 +13,12 @@ import {
   Typography,
 } from "@mui/material";
 
-import { getPayees } from "../../services/payeesService";
+import { getPayees } from "../services/payeesService";
 import {
   transferMoney,
   type TransferResponse,
-} from "../../services/transactionsService";
-import type { Payee } from "../../types/payees";
+} from "../services/transactionsService";
+import type { Payee } from "../types/payees";
 import { transferValidationSchema } from "@/validation/transferValidation";
 
 export default function TransferMoney() {

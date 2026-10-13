@@ -40,13 +40,29 @@ export class UsersService {
 
     //Get All users 
 
-    async getAllUsers() {
-        try {
-            return await this.usersModel.find();
+    async getAllUsers(filters: {
+        search?: string;
+        role?: string;
+        status?: string;
+    }) {
+        const query: any = {};
 
-        } catch (err) {
-            throw new Error("Unable to getAllUser()")
+        if (filters.search) {
+            query.$or = [
+                { name: { $regex: filters.search, $options: "i" } },
+                { email: { $regex: filters.search, $options: "i" } },
+            ];
         }
+
+        if (filters.role) {
+            query.role = filters.role;
+        }
+
+        if (filters.status) {
+            query.isLocked = filters.status === "locked";
+        }
+
+        return this.usersModel.find(query).sort({ createdAt: -1 }).select("-passwordHash").exec();
     }
 
 
@@ -86,6 +102,24 @@ export class UsersService {
         }
 
         return user;
+    }
+
+    async toggleUserLock(id: string) {
+        const user = await this.usersModel.findOne({ id }).exec();
+
+        if (!user) {
+            throw new NotFoundException("User not found");
+        }
+
+        user.isLocked = !user.isLocked;
+        await user.save();
+
+        return {
+            message: user.isLocked
+                ? "User locked successfully"
+                : "User unlocked successfully",
+            user,
+        };
     }
 
 

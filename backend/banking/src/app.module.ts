@@ -6,6 +6,8 @@ import { ConfigModule } from "@nestjs/config";
 import { AccountsModule } from './accounts/accounts.module.js';
 import { PayeesModule } from './payees/payees.module.js';
 import { TransactionsModule } from './transactions/transactions.module.js';
+import { BillPaymentModule } from './bill-payment/bill-payment.module.js';
+import { DashboardAnalyticsModule } from './dashboard-analytics/dashboard-analytics.module.js';
 
 
 @Module({
@@ -15,7 +17,9 @@ import { TransactionsModule } from './transactions/transactions.module.js';
     AuthModule,
     AccountsModule,
     PayeesModule,
-    TransactionsModule],
+    TransactionsModule,
+    BillPaymentModule,
+    DashboardAnalyticsModule],
   controllers: [],
   providers: [],
 })

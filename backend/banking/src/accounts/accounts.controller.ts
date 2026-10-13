@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post, Req, UseGuards } from '@nestjs/common';
 import { AccountsService } from "./accounts.service.js";
 import { JwtAuthGuard } from "../common/guards/jwt-auth.guard.js";
 import { RolesGuard } from "../common//guards/roles.guard.js";
@@ -36,6 +36,13 @@ export class AccountsController {
     @Get("/me")
     async getAccountById(@Req() req: any) {
         return this.accountsService.getAccountById(req.user.sub);
+    }
+
+    @Roles("Admin")
+    @UseGuards(JwtAuthGuard, RolesGuard)
+    @Patch(":id/freeze")
+    async freezeAccount(@Param('id') id:string){
+        return this.accountsService.toggleFreezeAccount(id)
     }
 
 }

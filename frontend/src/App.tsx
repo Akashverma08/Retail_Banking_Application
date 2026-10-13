@@ -17,10 +17,12 @@ import PayeesList from "./pages/PayeesList";
 import AddPayee from "./components/payees/AddPayee";
 import EditPayee from "./components/payees/EditPayee";
 import ViewPayee from "./components/payees/ViewPayee";
-import TransferMoney from "./components/transactions/TransferMoney";
-import MyTransactions from "./components/transactions/MyTransactions";
-import AdminTransactions from "./components/transactions/AdminTransactions";
+import TransferMoney from "./pages/TransferMoney";
+import MyTransactions from "./pages/MyTransactions";
+import AdminTransactions from "./pages/AdminTransactions";
 import UserDetails from "./components/users/UserDetails";
+import Bills from "./pages/Bills";
+import EditUser from "./components/users/EditUser";
 
 export default function App() {
 
@@ -132,6 +134,15 @@ export default function App() {
           />
 
           <Route
+            path="/bills"
+            element={
+              <Protected allowedRoles={["Customer"]}>
+                <Bills/>
+              </Protected>
+            }
+          />
+
+          <Route
             path="/transactions"
             element={
               <Protected allowedRoles={["Admin"]}>
@@ -150,7 +161,14 @@ export default function App() {
           <Route
             path="/users/:id"
             element={<Protected allowedRoles={["Admin"]}>
-              <UserDetails/>
+              <UserDetails />
+            </Protected>}
+          />
+
+                    <Route
+            path="/users/edit/:id"
+            element={<Protected allowedRoles={["Admin"]}>
+              <EditUser/>
             </Protected>}
           />
 

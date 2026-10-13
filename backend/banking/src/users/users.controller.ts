@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Req, UseGuards,Param } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, UseGuards, Param, Patch, Query } from '@nestjs/common';
 import { UsersService } from "./users.service.js";
 import { CreateUserDTO } from "./dto/create-user.dto.js";
 import { JwtAuthGuard } from "../common/guards/jwt-auth.guard.js";
@@ -17,12 +17,13 @@ export class UsersController {
 
     }
 
-
     @UseGuards(JwtAuthGuard, RolesGuard)
     @Roles('Admin')
     @Get()
-    async getAllUsers() {
-        return this.usersService.getAllUsers();
+    async getAllUsers(@Query("search") search ?: string,
+        @Query("role") role ?: string,
+        @Query("status") status ?: string,) {
+        return this.usersService.getAllUsers({ search, role, status });
 
     }
 
@@ -43,8 +44,10 @@ export class UsersController {
         return this.usersService.getUserById(id);
     }
 
-
-
-
-
+    @Roles("Admin")
+    @UseGuards(JwtAuthGuard, RolesGuard)
+    @Patch(":id/lock")
+    async toggleUserLock(@Param("id") id: string) {
+        return this.usersService.toggleUserLock(id);
+    }
 }

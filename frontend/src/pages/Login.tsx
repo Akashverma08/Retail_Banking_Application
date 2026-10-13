@@ -1,6 +1,5 @@
-import { Link, useNavigate } from "react-router";
+import {  useNavigate } from "react-router";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-
 import { loginValidationSchema } from "../validation/loginValidation";
 import { loginUser } from "../services/authService";
 
@@ -69,9 +68,6 @@ export default function Login() {
                         </div>
 
                         <button type="submit">Login</button>
-                        <Link className="signup-link" to="/signup">
-                            Sign Up
-                        </Link>
 
                     </Form>
 

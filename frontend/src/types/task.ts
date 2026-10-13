@@ -2,6 +2,7 @@
 export type Users = {
     id: string;
     name: string;
+    email:string;
     role: string;
     isLocked: boolean;
     createdAt: string

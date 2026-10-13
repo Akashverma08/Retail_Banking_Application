@@ -1,6 +1,7 @@
 import {
   Injectable,
   BadRequestException,
+  NotFoundException,
   ConflictException,
   InternalServerErrorException,
 } from '@nestjs/common';
@@ -88,6 +89,24 @@ export class AccountsService {
       .exec();
   }
 
+  async toggleFreezeAccount(accountId:string){
+    const account=await this.accountModel.findOne({id:accountId})
+
+    if(!account){
+      throw new NotFoundException("Account Not Found")
+    }
+    account.isFrozen=!account.isFrozen;
+
+    await account.save();
+
+    return{
+      message:account.isFrozen ? "Account is Freeze" :"Account Unfreeze",
+      account,
+    }
+
+
+  }
+
 
 
   async findByAccountNumber(accountNumber: string) {
@@ -124,4 +143,7 @@ export class AccountsService {
       { new: true }
     )
   }
+
+
+
 }

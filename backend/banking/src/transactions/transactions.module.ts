@@ -19,6 +19,7 @@ import {PayeesModule} from "../payees/payees.module.js";
     ])
   ],
   controllers: [TransactionsController],
-  providers: [TransactionsService]
+  providers: [TransactionsService],
+  exports:[MongooseModule,TransactionsService]
 })
 export class TransactionsModule {}
